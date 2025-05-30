@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Agence - Solutions Professionnelles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navigation améliorée */
+    nav {
+      background-color: var(--primary-color);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo-menu {
+      height: 60px;
+      width: auto;
+      transition: transform 0.3s;
+    }
+
+    .logo-menu:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all 0.3s;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    nav a i {
+      font-size: 16px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(banner.jpg);
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.3em;
+      margin-bottom: 30px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: all 0.3s;
+      border: 2px solid var(--accent-color);
+    }
+
+    .cta-button:hover {
+      background-color: transparent;
+      color: var(--accent-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Section Services */
+    .services-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5em;
+      color: var(--dark-color);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary-color);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .service-card:hover .service-image img {
+      transform: scale(1.1);
+    }
+
+    .service-content {
+      padding: 25px;
+    }
+
+    .service-content h3 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+
+    .service-content p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.3s;
+    }
+
+    .read-more:hover {
+      color: var(--primary-color);
+    }
+
+    /* Témoignages */
+    .testimonials {
+      background-color: var(--light-color);
+      padding: 80px 20px;
+    }
+
+    .testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .testimonial-card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-size: 80px;
+      color: var(--secondary-color);
+      opacity: 0.1;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      line-height: 1;
+    }
+
+    .testimonial-content {
+      margin-bottom: 20px;
+      font-style: italic;
+      color: #555;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-info h4 {
+      margin: 0;
+      color: var(--primary-color);
+    }
+
+    .author-info p {
+      margin: 5px 0 0;
+      color: #777;
+      font-size: 0.9em;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 60px 20px 30px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
+    .footer-about p {
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+    }
+
+    .social-links a:hover {
+      background-color: var(--secondary-color);
+    }
+
+    .footer-links h3 {
+      font-size: 1.3em;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-links h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--secondary-color);
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    .footer-links i {
+      font-size: 12px;
+    }
+
+    .footer-contact p {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      opacity: 0.8;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0.7;
+      font-size: 0.9em;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero h1 {
+        font-size: 2.5em;
+      }
+      
+      .hero p {
+        font-size: 1.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="menu-container">
+      <img src="logo.jpg" alt="Logo de l'agence" class="logo-menu">
+      <div class="nav-links">
+        <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+        <a href="apropos.html"><i class="fas fa-info-circle"></i> À propos</a>
+        <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Solutions innovantes pour votre entreprise</h1>
+      <p>Nous transformons vos idées en réalité avec notre expertise et notre créativité.</p>
+      <a href="contact.html" class="cta-button">Contactez-nous <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <div class="services-container">
+    <div class="section-title">
+      <h2>Nos Services Exceptionnels</h2>
+      <p>Découvrez comment nous pouvons vous aider à atteindre vos objectifs</p>
+    </div>
+    
+    <div class="services-grid">
+      <!-- Service 1 -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="service1.jpg" alt="Service 1">
+        </div>
+        <div class="service-content">
+          <h3>Stratégie Digitale</h3>
+          <p>Développez votre présence en ligne avec nos stratégies digitales sur mesure.</p>
+          <a href="serviceeeeeee.html" class="read-more">En savoir plus <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+      
+      <!-- Service 2 -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="service2.jpg" alt="Service 2">
+        </div>
+        <div class="service-content">
+          <h3>Design Créatif</h3>
+          <p>Des designs uniques qui captivent votre audience et renforcent votre identité.</p>
+          <a href="serviceeeeee.html" class="read-more">En savoir plus <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+      
+      <!-- Service 3 -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="service3.jpg" alt="Service 3">
+        </div>
+        <div class="service-content">
+          <h3>Développement Web</h3>
+          <p>Sites web performants et applications sur mesure pour votre entreprise.</p>
+          <a href="serviceeeee.html" class="read-more">En savoir plus <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+      
+      <!-- Service 4 -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="service4.jpg" alt="Service 4">
+        </div>
+        <div class="service-content">
+          <h3>Marketing Digital</h3>
+          <p>Augmentez votre visibilité et générez plus de leads avec nos campagnes.</p>
+          <a href="serviceeee.html" class="read-more">En savoir plus <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+      
+      <!-- Service 5 -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="service5.jpg" alt="Service 5">
+        </div>
+        <div class="service-content">
+          <h3>Consultation Expert</h3>
+          <p>Bénéficiez de l'expertise de nos consultants pour guider votre croissance.</p>
+          <a href="serviceee.html" class="read-more">En savoir plus <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+      
+      <!-- Service 6 -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="service6.jpg" alt="Service 6">
+        </div>
+        <div class="service-content">
+          <h3>Formation Professionnelle</h3>
+          <p>Formez vos équipes aux dernières technologies et méthodes de travail.</p>
+          <a href="servicee.html" class="read-more">En savoir plus <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Témoignages -->
+  <section class="testimonials">
+    <div class="testimonials-container">
+      <div class="section-title">
+        <h2>Ce Que Disent Nos Clients</h2>
+        <p>Découvrez les témoignages de nos clients satisfaits</p>
+      </div>
+      
+      <div class="testimonial-grid">
+        <!-- Témoignage 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>Cette agence a complètement transformé notre présence en ligne. Leurs stratégies digitales ont augmenté notre trafic de 300% en seulement 6 mois.</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="client1.jpg" alt="Client 1" class="author-avatar">
+            <div class="author-info">
+              <h4>Sophie Martin</h4>
+              <p>Directrice Marketing, Entreprise XYZ</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Témoignage 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>Le design de notre nouveau site web a dépassé toutes nos attentes. Professionnel, moderne et parfaitement adapté à notre image de marque.</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="client2.jpg" alt="Client 2" class="author-avatar">
+            <div class="author-info">
+              <h4>Pierre Dubois</h4>
+              <p>PDG, Société ABC</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Témoignage 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>Leur équipe de développement a créé une application sur mesure qui a révolutionné notre façon de travailler. Un partenariat exceptionnel.</p>
+          </div>
+          <div class="testimonial-author">
+            <img src="client3.jpg" alt="Client 3" class="author-avatar">
+            <div class="author-info">
+              <h4>Élodie Lambert</h4>
+              <p>Directrice Technique, Startup 123</p>
+            </div>
+          </div>
+</body>
+</html>
